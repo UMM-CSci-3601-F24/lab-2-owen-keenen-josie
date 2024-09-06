@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/PtOIikQq)
 # CSci 3601 Lab #2 - Building a web server in Java with Javalin <!-- omit in toc -->
 
 [![Server Build Status](../../actions/workflows/server-gradle.yml/badge.svg)](../../actions/workflows/server-gradle.yml)
@@ -79,10 +80,10 @@ The details are in [LABTASKS.md](./LABTASKS.md).
 
 ### Clone the project in GitKraken
 
-1. [ ] First, Open [GitKraken][gitkraken]. If you already have a project open, close it or open a new tab.
-2. [ ] Click "Clone a repo", select "GitHub.com" and find this repo in "Repository to Clone"
-3. [ ] Select where to put it and clone it
-4. [ ] You can then click "Open Repo" from the notification that appears to open the repo
+1. [x] First, Open [GitKraken][gitkraken]. If you already have a project open, close it or open a new tab.
+2. [x] Click "Clone a repo", select "GitHub.com" and find this repo in "Repository to Clone"
+3. [x] Select where to put it and clone it
+4. [x] You can then click "Open Repo" from the notification that appears to open the repo
 
 ### Open the project in VS Code
 

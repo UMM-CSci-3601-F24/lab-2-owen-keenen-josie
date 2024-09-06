@@ -79,6 +79,15 @@ public class UserControllerSpec {
     userController = new UserController(db);
   }
 
+   @Test
+  public void canFormString() {
+    User testTodo = new User();
+    testTodo.name = "This is a test!";
+
+    assertEquals("This is a test!", testTodo.toString());
+
+  }
+
   /**
    * Verify that we can successfully build a UserController
    * and call it's `addRoutes` method. This doesn't verify

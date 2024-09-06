@@ -13,5 +13,6 @@
         "NIQUENT",
         "OHMNET",
         "todos"
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }

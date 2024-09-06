@@ -3,9 +3,14 @@ package umm3601;
 import java.io.IOException;
 
 import umm3601.user.UserController;
+import umm3601.todo.TodoController;
+
 
 public class Main {
   public static final String USER_DATA_FILE = "/users.json";
+  public static final String TODO_DATA_FILE = "/todos.json";
+  public static final String TODO_TEST_DATA_FILE = "/sortTodoTest.json";
+
 
   public static void main(String[] args) throws IOException {
 
@@ -35,7 +40,8 @@ public class Main {
     Controller[] controllers = new Controller[] {
       // You would add additional controllers here, as you create them,
       // although you need to make sure that each of your new controllers implements
-      // the `Controller` interface.
+      // the `Controller` interface
+      TodoController.buildTodoController(TODO_DATA_FILE),
       UserController.buildUserController(USER_DATA_FILE)
     };
     return controllers;
