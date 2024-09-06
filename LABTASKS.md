@@ -233,9 +233,9 @@ At the very least (necessary to get 85% of this part of the lab)
 you should implement (and create meaningful server-side tests for) the following features:
 
 - List all the todos
-  - [ ] Implement an `api/todos` server-side endpoint, which returns all the to-dos
+  - [x] Implement an `api/todos` server-side endpoint, which returns all the to-dos
 - List a single todo by ID
-  - [ ] Implement an `api/todos/58895985c1849992336c219b` server-side endpoint, which
+  - [x] Implement an `api/todos/58895985c1849992336c219b` server-side endpoint, which
         returns the single todo with the given `_id`. It should return a 404
         (use the Javalin `NotFoundResponse` class) if there is no todo with the
         specified `_id`.
@@ -243,26 +243,26 @@ you should implement (and create meaningful server-side tests for) the following
   - [ ] Implement an `api/todos?limit=7` API endpoint, which lets you specify the maximum
         number of todos that the server returns.
 - Support filtering todos by their status (either complete or incomplete)
-  - [ ] Implement an `api/todos?status=complete` (or `incomplete`) endpoint which lets you
+  - [x] Implement an `api/todos?status=complete` (or `incomplete`) endpoint which lets you
         filter the todos and only return the complete (or incomplete) ones
-  - [ ] Note that the "database" stores the status as a boolean, but the endpoint uses
+  - [x] Note that the "database" stores the status as a boolean, but the endpoint uses
         "complete" and "incomplete". You'll have to implement the (simple) logic that
         transforms the endpoint "language" into the database terminology.
 - Support searching for todos whose _bodies_ contain a given string
-  - [ ] Implement an `api/todos?contains=banana` endpoint which lets you search for to-dos
+  - [x] Implement an `api/todos?contains=banana` endpoint which lets you search for to-dos
         whose _bodies_ contain (anywhere) the given string (in this case "banana").
 
 To get full (100%) credit on this part of the lab you should
 implement (and create meaningful tests for) these additional features:
 
 - Filter todos by owner
-  - [ ] Implement the endpoint `api/todos?owner=Blanche` which returns just the to-dos
+  - [x] Implement the endpoint `api/todos?owner=Blanche` which returns just the to-dos
         owned by Blanche
 - Filter todos by category
-  - [ ] Implement the endpoint `api/todos?category=groceries` which returns just the to-dos
+  - [x] Implement the endpoint `api/todos?category=groceries` which returns just the to-dos
         in the `groceries` category
 - Allow for ordering/sorting of todos by a particular attribute
-  - [ ] Implement the endpoint `api/todos?orderBy=owner` (or `body`, `status`, or `category`)
+  - [x] Implement the endpoint `api/todos?orderBy=owner` (or `body`, `status`, or `category`)
         which sorts the returned to-dos alphabetically by the specified field
 
 For full credit you also need to support arbitrary combinations

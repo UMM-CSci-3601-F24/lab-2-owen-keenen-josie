@@ -1,4 +1,5 @@
 package umm3601.todo;
+import umm3601.Main;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -25,7 +26,6 @@ import io.javalin.Javalin;
 import io.javalin.http.Context;
 import io.javalin.http.HttpStatus;
 import io.javalin.http.NotFoundResponse;
-import umm3601.Main;
 
 
 
@@ -46,6 +46,15 @@ public class TodoControllerSpec {
     MockitoAnnotations.openMocks(this);
     db = new TodoDatabase(Main.TODO_DATA_FILE);
     todoController = new TodoController(db);
+  }
+
+  @Test
+  public void canFormString() {
+    Todo testTodo = new Todo();
+    testTodo.body = "This is a test!";
+
+    assertEquals("This is a test!", testTodo.toString());
+
   }
 
   @Test
@@ -101,7 +110,7 @@ public class TodoControllerSpec {
   }
 
   @Test
-  public void canFilterStatusTodos() throws IOException {
+  public void canFilterTrueTodos() throws IOException {
     Map<String, List<String>> queryParams = new HashMap<>();
     queryParams.put("status", Arrays.asList(new String[] {"complete"}));
     when(ctx.queryParamMap()).thenReturn(queryParams);
@@ -110,6 +119,19 @@ public class TodoControllerSpec {
     verify(ctx).json(todoArrayCaptor.capture());
     for (Todo todo : todoArrayCaptor.getValue()) {
       assertEquals(true, todo.status);
+    }
+  }
+
+  @Test
+  public void canFilterFalseTodos() throws IOException {
+    Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put("status", Arrays.asList(new String[] {"incomplete"}));
+    when(ctx.queryParamMap()).thenReturn(queryParams);
+
+    todoController.getTodos(ctx);
+    verify(ctx).json(todoArrayCaptor.capture());
+    for (Todo todo : todoArrayCaptor.getValue()) {
+      assertEquals(false, todo.status);
     }
   }
 
@@ -153,5 +175,20 @@ public class TodoControllerSpec {
           assertTrue(todo.body.contains("laborum"));
       }
       assertEquals(80, todoArrayCaptor.getValue().length);
+    }
+
+    @Test
+    @SuppressWarnings({ "MagicNumber" })
+    public void canLimitTodos() {
+      Map<String, List<String>> queryParams = new HashMap<>();
+      queryParams.put("limit", Arrays.asList(new String[] {"10"}));
+      when(ctx.queryParamMap()).thenReturn(queryParams);
+
+      todoController.getTodos(ctx);
+
+      verify(ctx).json(todoArrayCaptor.capture());
+      assertEquals(10, todoArrayCaptor.getValue().length);
+
+
     }
 }

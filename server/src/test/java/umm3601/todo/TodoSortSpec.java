@@ -29,6 +29,8 @@ public class TodoSortSpec {
   public void setUp() throws IOException {
     MockitoAnnotations.openMocks(this);
     db = new TodoDatabase(Main.TODO_TEST_DATA_FILE);
+    // This is a differnt JSON file than normal
+    // It is smaller as to make testing easier
     todoController = new TodoController(db);
   }
 

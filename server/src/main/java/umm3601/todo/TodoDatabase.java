@@ -43,14 +43,15 @@ public class TodoDatabase {
   public Todo[] listTodos(Map<String, List<String>> queryParamMap) {
     Todo[] filteredTodos = allTodos;
 
+
     if (queryParamMap.containsKey("owner")) {
       String ownerParam = queryParamMap.get("owner").get(0);
       filteredTodos = filterTodosByOwner(filteredTodos, ownerParam);
     }
 
     if (queryParamMap.containsKey("category")) {
-      String ownerParam = queryParamMap.get("category").get(0);
-      filteredTodos = filterTodosByCategory(filteredTodos, ownerParam);
+      String categoryParam = queryParamMap.get("category").get(0);
+      filteredTodos = filterTodosByCategory(filteredTodos, categoryParam);
     }
 
     if (queryParamMap.containsKey("status")) {
@@ -84,6 +85,12 @@ public class TodoDatabase {
       if (orderParam.equals("status")) {
         filteredTodos = orderByStatus();
       }
+
+    }
+
+    if (queryParamMap.containsKey("limit")) {
+      String limitParam = queryParamMap.get("limit").get(0);
+      filteredTodos = limitTodos(filteredTodos, Integer.parseInt(limitParam));
     }
 
     return filteredTodos;
@@ -129,7 +136,13 @@ public class TodoDatabase {
     return todos.toArray(new Todo[] {});
   }
 
+  public Todo[] limitTodos(Todo[] todos, int n) {
+    Todo[] temp = new Todo[n];    // Makes array of size n
+    for (int i = 0; i < n; i++) { // Will run until i is equal to or greater than n
+      temp[i] = todos[i];         // copies over the values (in order)
+    }
+    return temp;  // return temp
 
-
+  }
 
 }
